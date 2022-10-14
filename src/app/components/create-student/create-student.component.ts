@@ -49,7 +49,7 @@ export class CreateStudentComponent implements OnInit {
 
   getCareers() {
     this._careerService.getCareers().subscribe(data => {
-      this.careers = data;
+      this.careers = data.sort((a,b) => a.description.localeCompare(b.description));
     });
   }
 
