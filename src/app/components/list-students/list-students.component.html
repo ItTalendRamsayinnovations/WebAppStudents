@@ -1,0 +1,34 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <span class="h3">Listado de Estudiantes</span>
+            <button class="btn btn-dark btn-lg float-right" routerLink="/create-student">Agregar</button>
+            <h5 style="margin-top: 30px;" *ngIf="students.length == 0">No hay datos para mostrar</h5>
+            <table *ngIf="students.length > 0" class="table table-striped mt-5 table-responsive-md">
+                <thead>
+                  <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Usuario</th>
+                    <th>Edad</th>
+                    <th>Carrera</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let student of students">
+                    <td>{{ student.firstName }}</td>
+                    <td>{{ student.lastName }}</td>
+                    <td>{{ student.username }}</td>
+                    <td>{{ student.age }}</td>
+                    <td>{{ student.career }}</td>
+                    <td>
+                      <i class="fas fa-edit fa-lg text-info mr-2" [routerLink]="['/editStudent/', student.id]"></i>
+                      <i (click)="deleteStudent(student.id)" class="fas fa-trash-alt fa-lg text-danger"></i>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
